@@ -2,16 +2,18 @@
 
 import zipfile, os, requests, psutil
 
+zipPath = os.getenv('APPDATA')+ "\Spotify" + "\chrome_elf.zip"
+spotifyPath = os.getenv('APPDATA')+ "\Spotify"
+spotifyExePath = os.getenv('APPDATA')+ "\Spotify" + "\Spotify.exe"
+
+os.startfile(spotifyExePath)
 
 for proc in psutil.process_iter():
 
     if proc.name() == "Spotify.exe":
         proc.terminate()
         
-
-zipPath = os.getenv('APPDATA')+ "\Spotify" + "\chrome_elf.zip"
-spotifyPath = os.getenv('APPDATA')+ "\Spotify"
-spotifyExePath = os.getenv('APPDATA')+ "\Spotify" + "\Spotify.exe"
+        
 print (f"Loaded Spotify directory: {zipPath}")
 
 r = requests.get("https://github.com/mrpond/BlockTheSpot/releases/latest/download/chrome_elf.zip")  
